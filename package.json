@@ -1,5 +1,5 @@
 {
-  "name": "my-new-project",
+  "name": "web-automation-wdio",
   "type": "module",
   "devDependencies": {
     "@types/chai": "^4.3.5",
