@@ -2,7 +2,8 @@ import { Given, When, Then } from "@wdio/cucumber-framework";
 import { expect } from "chai";
 
 Given(/^Google Homepage is opened$/, async function () {
-  console.log("Before Opening Browser!");
+  // @ts-ignore
+  console.log("Before Opening Browser!", JSON.stringify(browser.options.shoreURL));
   await browser.url("https://www.google.com");
   // await browser.debug();
   // await browser.pause(70000)

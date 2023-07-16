@@ -2,7 +2,7 @@ Feature: Feature name
 
     Feature Description
 
-    @Demo
+    @Demo @Smoke
     Scenario Outline: Scenario Outline name
     Given Google Homepage is opened
     When Search with <SearchItem>

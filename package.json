@@ -26,6 +26,10 @@
     "repl-debug": "npx wdio repl chrome",
     "test-ist-tz": "TZ=Asia/Kolkata --require=dotenv/config npm test",
     "test-singa-tz": "TZ=Asia/Singapore --require=dotenv/config npm test",
-    "test-utc-tz": "TZ=UTC --require=dotenv/config npm test"
+    "test-utc-tz": "TZ=UTC --require=dotenv/config npm test",
+    "qa:demo": "export HEADLESS=N && wdio run config/wdio.qa.conf.ts --cucumberOpts.tagExpression='@Demo'",
+    "qa:smoke": "wdio run wdio.qa.conf.ts --cucumberOpts.tagExpression='@Smoke'",
+    "qa:sanity": "export HEADLESS=N && wdio run config/wdio.qa.conf.ts --cucumberOpts.tagExpression='@Sanity'",
+    "qa:regression": "export HEADLESS=N && wdio run config/wdio.qa.conf.ts --cucumberOpts.tagExpression='@Regression'"
   }
 }
