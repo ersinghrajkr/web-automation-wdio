@@ -1,12 +1,14 @@
 import { Given, When, Then } from "@wdio/cucumber-framework";
 import { expect } from "chai";
+import logger from "../../helpers/logger.helper";
 
 Given(/^Google Homepage is opened$/, async function () {
-  console.log("Before Opening Browser!");
+  // logger.info(`${this.t} Before Opening Browser!`);
   await browser.url("https://www.google.com");
   // await browser.debug();
   // await browser.pause(70000)
-  console.log("After Opening Browser!");
+  // @ts-ignore
+  console.log("After Opening Browser!", JSON.stringify(browser.config));
 });
 
 When(/Search with (.*)$/, async function (searchItem) {

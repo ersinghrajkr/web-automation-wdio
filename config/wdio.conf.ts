@@ -38,7 +38,7 @@ export const config: Options.Testrunner = {
   currentDt: new Date(),
   specs: [
     // ToDo: define location for spec files here
-    `./test/features/**/*.feature`,
+    `../test/features/**/*.feature`,
   ],
   // Patterns to exclude.
   exclude: [
@@ -83,6 +83,7 @@ export const config: Options.Testrunner = {
             * "binary=<location>"",
             * "--auth-server-whitelist="_”"
          */
+      maxInstances: 3,
       browserName: "chrome",
       acceptInsecureCerts: true,
       "goog:chromeOptions": {
@@ -91,11 +92,11 @@ export const config: Options.Testrunner = {
             ? [
                 "--disable-web-security",
                 "--headless",
-                "--start-in-incognito",
-                "--auto-accept-camera-and-microphone-capture",
                 "--disable-dev-shm-usage",
                 "--no-sandbox",
                 "--window-size=1920,1080",
+                "--start-in-incognito",
+                "--auto-accept-camera-and-microphone-capture",
                 "--disable-gpu",
               ]
             : [],
@@ -103,7 +104,7 @@ export const config: Options.Testrunner = {
       timeouts: { implicit: 10000, pageLoad: 20000, script: 30000 },
     },
     // {
-    // maxInstances: 3,
+    //   maxInstances: 3,
     //   browserName: "firefox",
     //   acceptInsecureCerts: true,
     //   timeouts: { implicit: 10000, pageLoad: 20000, script: 30000}
@@ -196,7 +197,7 @@ export const config: Options.Testrunner = {
   // If you are using Cucumber you need to specify the location of your step definitions.
   cucumberOpts: {
     // <string[]> (file/dir) require files before executing features
-    require: [`./test/features/step-definitions/**/*.ts`],
+    require: [`../test/features/step-definitions/**/*.ts`],
     // <boolean> show full backtrace for errors
     backtrace: false,
     // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)

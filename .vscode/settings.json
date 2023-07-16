@@ -1,0 +1,32 @@
+{
+  "workbench.iconTheme": "vscode-icons",
+  "C_Cpp.default.compilerPath": "/usr/bin/clang++",
+  "redhat.telemetry.enabled": false,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  // "editor.fontWeight": "normal",
+  "editor.fontWeight": "400",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.preferences.importModuleSpecifierEnding": "js",
+  "cucumberautocomplete.steps": [
+    "test/features/step-definitions/**/*.ts"
+    // "node_modules/qa-lib/src/step_definitions/*.js"
+  ],
+  "cucumberautocomplete.strictGherkinCompletion": true,
+  "editor.quickSuggestions": {
+    "comments": false,
+    "strings": true,
+    "other": true
+  }
+}
