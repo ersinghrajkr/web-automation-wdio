@@ -2,6 +2,10 @@
 import type { Options } from "@wdio/types";
 import dotenv from "dotenv";
 import fs from "fs";
+import fs from "node:fs/promises";
+// Import the module
+import { generate } from "multiple-cucumber-html-reporter";
+import cucumberJson from 'wdio-cucumberjs-json-reporter';
 dotenv.config();
 
 export const config: Options.Testrunner = {
@@ -182,12 +186,21 @@ export const config: Options.Testrunner = {
 	// see also: https://webdriver.io/docs/dot-reporter
 	reporters: [
 		"spec",
+		// [
+		// 	"allure",
+		// 	{
+		// 		outputDir: "allure-results",
+		// 		disableWebdriverStepsReporting: true,
+		// 		useCucumberStepReporter: true,
+		// 	},
+		// ],
 		[
-			"allure",
+			"cucumberjs-json",
 			{
-				outputDir: "allure-results",
-				disableWebdriverStepsReporting: true,
-				useCucumberStepReporter: true,
+				jsonFolder: `${process.cwd()}/report/json`,
+				language: "en",
+				reportFilePerRetry: true,
+				disableHooks: false,
 			},
 		],
 	],
@@ -236,8 +249,12 @@ export const config: Options.Testrunner = {
 		if (process.env.RUNNER === "LOCAL" && fs.existsSync("./allure-results")) {
 			fs.rmdirSync("./allure-results", { recursive: true });
 		}
+
+		if (process.env.RUNNER === "LOCAL" && fs.existsSync("./report/json")) {
+			fs.rmdirSync("./report/json", { recursive: true });
+		}
 	},
-	
+
 	/**
 	 * Gets executed before a worker process is spawned and can be used to initialise specific service
 	 * for that worker as well as modify runtime environments in an async fashion.
@@ -354,7 +371,10 @@ export const config: Options.Testrunner = {
 	afterStep: async function (step, scenario, result, context) {
 		// Take screenshot if failed
 		if (!result.passed) {
-			await browser.takeScreenshot();
+			// for Allure Report
+			// await browser.takeScreenshot();
+			// for multiple-cucumber-html-reporter
+			await cucumberJson.attach(await browser.takeScreenshot(), 'image/png');
 		}
 		// console.log(`step >>> ${typeof step} - ${JSON.stringify(step)}`)
 		// console.log(`\n scenario >>> ${typeof scenario} - ${JSON.stringify(scenario)}`)
@@ -416,8 +436,38 @@ export const config: Options.Testrunner = {
 	 * @param {Array.<Object>} capabilities list of capabilities details
 	 * @param {<Object>} results object containing test results
 	 */
-	// onComplete: function(exitCode, config, capabilities, results) {
-	// },
+	onComplete: async function (exitCode, config, capabilities, results): Promise<void> {
+		// Generate the report when it all tests are done
+		// generate({
+		// 	// Required
+		// 	// This part needs to be the same path where you store the JSON files
+		// 	// default = '.tmp/json/'
+		// 	jsonDir: ".tmp/json/",
+		// 	reportPath: "./reports",
+		// 	// for more options see https://github.com/wswebcreation/multiple-cucumber-html-reporter#options
+		// });
+
+		 // Generate the report when it all tests are done
+		 let date = new Date();
+		 generate({
+		   jsonDir: `${process.cwd()}/report/json`,
+		   reportPath: `${process.cwd()}/report/Report_${date.getDate()}-${date.getMonth()+1}_${date.getTime()}`,
+		   openReportInBrowser: true,
+		   disableLog: true,
+		   saveCollectedJSON: true,
+		   reportName: 'Acceptance Tests Report',
+		   customData: {
+			 title: 'WDIO tests Report',
+			 data: [
+			   { label: 'Project', value: 'WDIO Demo Project' },
+			   { label: 'Environment', value: `QA` },
+			   { label: 'BaseURL', value: 'baseUrl' },
+			   { label: 'Platform', value: process.platform },
+			   { label: 'Date-Time', value: `${date.toLocaleDateString()} - ${date.getTime()}` }
+			 ]
+		   }
+		 });
+	},
 	/**
 	 * Gets executed when a refresh happens.
 	 * @param {string} oldSessionId session ID of the old session
