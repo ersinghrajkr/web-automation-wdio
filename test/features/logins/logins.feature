@@ -3,7 +3,7 @@ Feature: IAM Logins for different role
     Feature Description
 
     @Logins
-    Scenario Outline: Multiple role Login 
+    Scenario Outline: <TestID>: Multiple role Login 
     Given As a standard user I login to SwagLabs
         |UserType           | Username      | Password      |
         |Standard User      | standard_user | secret_sauce  |

@@ -1,0 +1,268 @@
+{
+	"gherkinDocument": {
+		"feature": {
+			"tags": [],
+			"location": { "line": 1, "column": 1 },
+			"language": "en",
+			"keyword": "Feature",
+			"name": "IAM Logins for different role",
+			"description": "    Feature Description",
+			"children": [
+				{
+					"scenario": {
+						"id": "12",
+						"tags": [
+							{
+								"location": { "line": 5, "column": 5 },
+								"name": "@Logins",
+								"id": "11"
+							}
+						],
+						"location": { "line": 6, "column": 5 },
+						"keyword": "Scenario Outline",
+						"name": "<TestID>: Multiple role Login",
+						"description": "",
+						"steps": [
+							{
+								"id": "5",
+								"location": { "line": 7, "column": 5 },
+								"keyword": "Given ",
+								"keywordType": "Context",
+								"text": "As a standard user I login to SwagLabs",
+								"dataTable": {
+									"location": { "line": 8, "column": 9 },
+									"rows": [
+										{
+											"id": "0",
+											"location": { "line": 8, "column": 9 },
+											"cells": [
+												{
+													"location": { "line": 8, "column": 10 },
+													"value": "UserType"
+												},
+												{
+													"location": { "line": 8, "column": 31 },
+													"value": "Username"
+												},
+												{
+													"location": { "line": 8, "column": 47 },
+													"value": "Password"
+												}
+											]
+										},
+										{
+											"id": "1",
+											"location": { "line": 9, "column": 9 },
+											"cells": [
+												{
+													"location": { "line": 9, "column": 10 },
+													"value": "Standard User"
+												},
+												{
+													"location": { "line": 9, "column": 31 },
+													"value": "standard_user"
+												},
+												{
+													"location": { "line": 9, "column": 47 },
+													"value": "secret_sauce"
+												}
+											]
+										},
+										{
+											"id": "2",
+											"location": { "line": 10, "column": 9 },
+											"cells": [
+												{
+													"location": { "line": 10, "column": 10 },
+													"value": "Locked Out User"
+												},
+												{
+													"location": { "line": 10, "column": 31 },
+													"value": "standard_user"
+												},
+												{
+													"location": { "line": 10, "column": 47 },
+													"value": "secret_sauce"
+												}
+											]
+										},
+										{
+											"id": "3",
+											"location": { "line": 11, "column": 9 },
+											"cells": [
+												{
+													"location": { "line": 11, "column": 10 },
+													"value": "Performance User"
+												},
+												{
+													"location": { "line": 11, "column": 31 },
+													"value": "standard_user"
+												},
+												{
+													"location": { "line": 11, "column": 47 },
+													"value": "secret_sauce"
+												}
+											]
+										},
+										{
+											"id": "4",
+											"location": { "line": 12, "column": 9 },
+											"cells": [
+												{
+													"location": { "line": 12, "column": 10 },
+													"value": "Problem User"
+												},
+												{
+													"location": { "line": 12, "column": 31 },
+													"value": "standard_user"
+												},
+												{
+													"location": { "line": 12, "column": 47 },
+													"value": "secret_sauce"
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"id": "6",
+								"location": { "line": 13, "column": 5 },
+								"keyword": "When ",
+								"keywordType": "Action",
+								"text": "Products page is opened"
+							},
+							{
+								"id": "7",
+								"location": { "line": 14, "column": 5 },
+								"keyword": "Then ",
+								"keywordType": "Outcome",
+								"text": "Inventory page should list <NumberOfProducts>"
+							}
+						],
+						"examples": [
+							{
+								"id": "10",
+								"tags": [],
+								"location": { "line": 18, "column": 5 },
+								"keyword": "Examples",
+								"name": "",
+								"description": "",
+								"tableHeader": {
+									"id": "8",
+									"location": { "line": 19, "column": 9 },
+									"cells": [
+										{
+											"location": { "line": 19, "column": 11 },
+											"value": "TestID"
+										},
+										{
+											"location": { "line": 19, "column": 27 },
+											"value": "NumberOfProducts"
+										}
+									]
+								},
+								"tableBody": [
+									{
+										"id": "9",
+										"location": { "line": 20, "column": 9 },
+										"cells": [
+											{
+												"location": { "line": 20, "column": 11 },
+												"value": "INTV_TC001"
+											},
+											{
+												"location": { "line": 20, "column": 27 },
+												"value": "6"
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		"comments": [
+			{
+				"location": { "line": 15, "column": 1 },
+				"text": "    # Then Validate all products have valid price"
+			}
+		],
+		"uri": "C:\\RajKumar\\#SDET\\web-automation-wdio\\test\\features\\logins\\logins.feature"
+	},
+	"pickle": {
+		"id": "16",
+		"uri": "C:\\RajKumar\\#SDET\\web-automation-wdio\\test\\features\\logins\\logins.feature",
+		"astNodeIds": ["12", "9"],
+		"name": "INTV_TC001: Multiple role Login",
+		"language": "en",
+		"steps": [
+			{
+				"id": "13",
+				"text": "As a standard user I login to SwagLabs",
+				"type": "Context",
+				"argument": {
+					"dataTable": {
+						"rows": [
+							{
+								"cells": [
+									{ "value": "UserType" },
+									{ "value": "Username" },
+									{ "value": "Password" }
+								]
+							},
+							{
+								"cells": [
+									{ "value": "Standard User" },
+									{ "value": "standard_user" },
+									{ "value": "secret_sauce" }
+								]
+							},
+							{
+								"cells": [
+									{ "value": "Locked Out User" },
+									{ "value": "standard_user" },
+									{ "value": "secret_sauce" }
+								]
+							},
+							{
+								"cells": [
+									{ "value": "Performance User" },
+									{ "value": "standard_user" },
+									{ "value": "secret_sauce" }
+								]
+							},
+							{
+								"cells": [
+									{ "value": "Problem User" },
+									{ "value": "standard_user" },
+									{ "value": "secret_sauce" }
+								]
+							}
+						]
+					}
+				},
+				"astNodeIds": ["5", "9"],
+				"keyword": "Given "
+			},
+			{
+				"id": "14",
+				"text": "Products page is opened",
+				"type": "Action",
+				"astNodeIds": ["6", "9"],
+				"keyword": "When "
+			},
+			{
+				"id": "15",
+				"text": "Inventory page should list 6",
+				"type": "Outcome",
+				"astNodeIds": ["7", "9"],
+				"keyword": "Then "
+			}
+		],
+		"tags": [{ "name": "@Logins", "astNodeId": "11" }]
+	},
+	"testCaseStartedId": "36"
+}
