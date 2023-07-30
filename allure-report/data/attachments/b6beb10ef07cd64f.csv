@@ -1,0 +1,5 @@
+UserType,Username,Password
+Standard User,standard_user,secret_sauce
+Locked Out User,standard_user,secret_sauce
+Performance User,standard_user,secret_sauce
+Problem User,standard_user,secret_sauce

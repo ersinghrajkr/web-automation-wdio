@@ -322,6 +322,7 @@ export const config: Options.Testrunner = {
 	 * @param {object}                 context  Cucumber World object
 	 */
 	beforeScenario: function (world, context) {
+		// console.log(`WORLD OBJECT - ${JSON.stringify(world)}`);
 		let arr = world.pickle.name.split(/:/);
 		// @ts-ignore
 		if (arr.length > 0) browser.options.testid = arr[0];
@@ -355,10 +356,10 @@ export const config: Options.Testrunner = {
 		if (!result.passed) {
 			await browser.takeScreenshot();
 		}
-		console.log(`step >>> ${typeof step} - ${JSON.stringify(step)}`)
-		console.log(`\n scenario >>> ${typeof scenario} - ${JSON.stringify(scenario)}`)
-		console.log(`\n result >>> ${typeof result} - ${JSON.stringify(result)}`)
-		console.log(`\n context >>> ${typeof context} - ${JSON.stringify(context)}`)
+		// console.log(`step >>> ${typeof step} - ${JSON.stringify(step)}`)
+		// console.log(`\n scenario >>> ${typeof scenario} - ${JSON.stringify(scenario)}`)
+		// console.log(`\n result >>> ${typeof result} - ${JSON.stringify(result)}`)
+		// console.log(`\n context >>> ${typeof context} - ${JSON.stringify(context)}`)
 	},
 	/**
 	 *
