@@ -1,0 +1,48 @@
+{
+	"id": "13",
+	"text": "As a standard user I login to SwagLabs",
+	"type": "Context",
+	"argument": {
+		"dataTable": {
+			"rows": [
+				{
+					"cells": [
+						{ "value": "UserType" },
+						{ "value": "Username" },
+						{ "value": "Password" }
+					]
+				},
+				{
+					"cells": [
+						{ "value": "Standard User" },
+						{ "value": "standard_user" },
+						{ "value": "secret_sauce" }
+					]
+				},
+				{
+					"cells": [
+						{ "value": "Locked Out User" },
+						{ "value": "standard_user" },
+						{ "value": "secret_sauce" }
+					]
+				},
+				{
+					"cells": [
+						{ "value": "Performance User" },
+						{ "value": "standard_user" },
+						{ "value": "secret_sauce" }
+					]
+				},
+				{
+					"cells": [
+						{ "value": "Problem User" },
+						{ "value": "standard_user" },
+						{ "value": "secret_sauce" }
+					]
+				}
+			]
+		}
+	},
+	"astNodeIds": ["5", "9"],
+	"keyword": "Given "
+}

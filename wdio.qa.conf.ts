@@ -3,13 +3,13 @@ import {config as baseConfig } from './wdio.conf.js';
 
 export const config = Object.assign(baseConfig, {
     environment: 'QA',
-    shoreURL: 'https://shore-qa.otaliodev.com',
-    ship2URL: 'https://ship2-qa.otaliodev.com',
+    baseURL: 'https://www.saucedemo.com/',
+    shoreURL: 'https://www.saucedemo.com/v1/index.html',
     sqlConfig: {
-        user: '',
-        password: '',
-        database: '',
-        server: '',
+        user: 'hello',
+        password: 'hello',
+        database: 'hello',
+        server: 'hello',
         options: {}
     }
 })
