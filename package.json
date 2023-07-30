@@ -9,6 +9,7 @@
     "@wdio/cucumber-framework": "^8.12.1",
     "@wdio/local-runner": "^8.12.1",
     "@wdio/spec-reporter": "^8.12.2",
+    "allure-commandline": "^2.23.1",
     "chai": "^4.3.7",
     "chromedriver": "^114.0.2",
     "dotenv": "^16.3.1",
@@ -29,7 +30,9 @@
     "test-utc-tz": "TZ=UTC --require=dotenv/config npm test",
     "qa:demo": "export HEADLESS=N && wdio run config/wdio.qa.conf.ts --cucumberOpts.tagExpression='@Demo'",
     "qa:smoke": "wdio run wdio.qa.conf.ts --cucumberOpts.tagExpression='@Smoke'",
+    "qa:logins": "wdio run wdio.qa.conf.ts --cucumberOpts.tagExpression='@Logins'",
     "qa:sanity": "export HEADLESS=N && wdio run config/wdio.qa.conf.ts --cucumberOpts.tagExpression='@Sanity'",
-    "qa:regression": "export HEADLESS=N && wdio run config/wdio.qa.conf.ts --cucumberOpts.tagExpression='@Regression'"
+    "qa:regression": "export HEADLESS=N && wdio run config/wdio.qa.conf.ts --cucumberOpts.tagExpression='@Regression'",
+    "allure-report": "allure generate --clean ./allure-results && allure open -p 5050"
   }
 }

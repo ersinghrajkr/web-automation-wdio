@@ -1,0 +1,72 @@
+{
+	"id": "0",
+	"uri": "C:\\RajKumar\\#SDET\\web-automation-wdio\\test\\features\\logins\\logins.feature",
+	"astNodeIds": ["12", "9"],
+	"name": "Multiple role Login",
+	"language": "en",
+	"steps": [
+		{
+			"id": "13",
+			"text": "As a standard user I login to SwagLabs",
+			"type": "Context",
+			"argument": {
+				"dataTable": {
+					"rows": [
+						{
+							"cells": [
+								{ "value": "UserType" },
+								{ "value": "Username" },
+								{ "value": "Password" }
+							]
+						},
+						{
+							"cells": [
+								{ "value": "Standard User" },
+								{ "value": "standard_user" },
+								{ "value": "secret_sauce" }
+							]
+						},
+						{
+							"cells": [
+								{ "value": "Locked Out User" },
+								{ "value": "standard_user" },
+								{ "value": "secret_sauce" }
+							]
+						},
+						{
+							"cells": [
+								{ "value": "Performance User" },
+								{ "value": "standard_user" },
+								{ "value": "secret_sauce" }
+							]
+						},
+						{
+							"cells": [
+								{ "value": "Problem User" },
+								{ "value": "standard_user" },
+								{ "value": "secret_sauce" }
+							]
+						}
+					]
+				}
+			},
+			"astNodeIds": ["5", "9"],
+			"keyword": "Given "
+		},
+		{
+			"id": "14",
+			"text": "Products page is opened",
+			"type": "Action",
+			"astNodeIds": ["6", "9"],
+			"keyword": "When "
+		},
+		{
+			"id": "15",
+			"text": "Inventory page should list 6",
+			"type": "Outcome",
+			"astNodeIds": ["7", "9"],
+			"keyword": "Then "
+		}
+	],
+	"tags": [{ "name": "@Logins", "astNodeId": "11" }]
+}

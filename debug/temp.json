@@ -1,0 +1,6 @@
+[
+	{ "UserType": "Standard User", "Username": "standard_user", "Password": "secret_sauce" },
+	{ "UserType": "Locked Out User", "Username": "standard_user", "Password": "secret_sauce" },
+	{ "UserType": "Performance User", "Username": "standard_user", "Password": "secret_sauce" },
+	{ "UserType": "Problem User", "Username": "standard_user", "Password": "secret_sauce" }
+]
