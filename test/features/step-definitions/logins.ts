@@ -35,7 +35,7 @@ Given(/^As (a|an) (.*) user I login to SwagLabs$/, async function (prefixTxt, us
 });
 
 When(/^Products page is opened$/, async function () {
-	// throw Error(`Failed`);
+	throw Error(`Failed`);
 	let ele = await $(".product_label");
 	let headerLabel = await ele.getText();
 	logger.info("logo>>>>", headerLabel);
