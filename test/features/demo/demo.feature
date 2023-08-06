@@ -2,7 +2,7 @@ Feature: Feature name
 
     Feature Description
 
-    @Demo @Smoke
+    @Demo @Smoke @Logins
     Scenario Outline: <TestID>: Scenario Outline name
     Given Google Homepage is opened
     When Search with <SearchItem>

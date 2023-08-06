@@ -1,5 +1,6 @@
 import { Given, When, Then } from "@wdio/cucumber-framework";
 import { expect } from "chai";
+import logger from "../../helpers/logger.helper.js";
 
 Given(/^Google Homepage is opened$/, async function () {
   // @ts-ignore
@@ -30,4 +31,7 @@ Then(/URL should match (.*)$/, async function (expectedURL) {
   expect(actaulURL).to.equal(`${actaulURL}`);
   // await browser.debug();
   console.log("Client Timezone UTC",-((new Date()).getTimezoneOffset()/60), (new Date()).getTimezoneOffset());
+  // @ts-ignore
+	console.log(`I_AM_RUNTIME_GLOBAL_VAR -  ${this.I_AM_RUNTIME_GLOBAL_VAR}`);
+  logger.info("CustomeWorld Global Variable - anyGlobalVar: ", this.anyGlobalVar);
 });
