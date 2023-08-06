@@ -2,7 +2,6 @@
 import type { Options } from "@wdio/types";
 import dotenv from "dotenv";
 import fs from "fs";
-import fs from "node:fs/promises";
 // Import the module
 import { generate } from "multiple-cucumber-html-reporter";
 import cucumberJson from 'wdio-cucumberjs-json-reporter';
@@ -38,7 +37,7 @@ export const config: Options.Testrunner = {
 	// If you are calling `wdio` from an NPM script (see https://docs.npmjs.com/cli/run-script),
 	// then the current working directory is where your `package.json` resides, so `wdio`
 	// will be called from there.
-	//
+	
 	currentDt: new Date(),
 	specs: [
 		// ToDo: define location for spec files here
@@ -463,7 +462,7 @@ export const config: Options.Testrunner = {
 			   { label: 'Environment', value: `QA` },
 			   { label: 'BaseURL', value: 'baseUrl' },
 			   { label: 'Platform', value: process.platform },
-			   { label: 'Date-Time', value: `${date.toLocaleDateString()} - ${date.getTime()}` }
+			   { label: 'Date-Time', value: date.toLocaleString()}
 			 ]
 		   }
 		 });

@@ -7,9 +7,11 @@ import { expect } from "chai";
 class CustomWorld {
     anyGlobalVar: string
     testid: string
+    I_AM_RUNTIME_GLOBAL_VAR: string
 	constructor() {
-        this.anyGlobalVar = '';
+        this.anyGlobalVar = 'Default_Val';
         this.testid='';
+        this.I_AM_RUNTIME_GLOBAL_VAR = '';
     }
 }
 

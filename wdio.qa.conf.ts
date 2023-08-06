@@ -5,6 +5,7 @@ export const config = Object.assign(baseConfig, {
     environment: 'QA',
     baseURL: 'https://www.saucedemo.com/',
     shoreURL: 'https://www.saucedemo.com/v1/index.html',
+    apiURL: "https://reqres.in/",
     sqlConfig: {
         user: 'hello',
         password: 'hello',
