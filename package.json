@@ -32,11 +32,11 @@
     "test-ist-tz": "TZ=Asia/Kolkata --require=dotenv/config npm test",
     "test-singa-tz": "TZ=Asia/Singapore --require=dotenv/config npm test",
     "test-utc-tz": "TZ=UTC --require=dotenv/config npm test",
-    "qa:demo": "export HEADLESS=N && wdio run config/wdio.qa.conf.ts --cucumberOpts.tagExpression='@Demo'",
+    "qa:demo": "export HEADLESS=N && wdio run wdio.qa.conf.ts --cucumberOpts.tagExpression='@Demo'",
     "qa:smoke": "wdio run wdio.qa.conf.ts --cucumberOpts.tagExpression='@Smoke'",
     "qa:logins": "wdio run wdio.qa.conf.ts --cucumberOpts.tagExpression='@Logins'",
-    "qa:sanity": "export HEADLESS=N && wdio run config/wdio.qa.conf.ts --cucumberOpts.tagExpression='@Sanity'",
-    "qa:regression": "export HEADLESS=Y && wdio run config/wdio.qa.conf.ts --cucumberOpts.tagExpression='@Regression'",
+    "qa:sanity": "export HEADLESS=N && wdio run wdio.qa.conf.ts --cucumberOpts.tagExpression='@Sanity'",
+    "qa:regression": "export HEADLESS=Y && wdio run wdio.qa.conf.ts --cucumberOpts.tagExpression='@Regression'",
     "allure-report": "allure generate --clean ./allure-results && allure open -p 5050",
     "generate-reports": "npm run generate-report"
   }
