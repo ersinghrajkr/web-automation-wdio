@@ -121,7 +121,7 @@ export const config: Options.Testrunner = {
 	//
 	// Level of logging verbosity: trace | debug | info | warn | error | silent
 	//   logLevel: 'info',
-	logLevel: process.env.DEBUG.toUpperCase() === "Y" ? "info" : "error",
+	logLevel: process.env.LOG_LEVEL.toUpperCase() === "Y" ? "info" : "error",
 	//
 	// Set specific log levels per logger
 	// loggers:

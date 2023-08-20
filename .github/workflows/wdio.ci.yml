@@ -1,21 +1,29 @@
-name: CI
-on: [push, pull_request]
+name: web-automation-wdio-CI
+on: [ push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
+    env: 
+      RUNNER: ${{secrets.RUNNER}}
+      HEADLESS: ${{secrets.HEADLESS}}
+      LOG_LEVEL: ${{secrets.LOG_LEVEL}}
+      TEST_STD_USERNAME: ${{secrets.TEST_STD_USERNAME}}
+      TEST_STD_PASSWORD: ${{secrets.TEST_STD_PASSWORD}}
     steps:
-        - name: Checkout
-          uses: actions/checkout@v2
-        - uses: actions/setup-node@v1
-          with:
-            node-version: 16
-        - name: Install
-          run: npm install
-        - name: Test-wdio
-          #run: npm run qa:regression
-          run: echo GitHub Integration is successful
-        - uses: actions/upload-artifact@v1
-          if: failure()
-          with:
-            name: logs
-            path: logs
+      - name: Install Chromium
+        run: sudo apt-get install chromium-browser
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+      - name: Install Dependencies
+        run: npm install
+      - name: Run Regression Suite
+        run: npm run qa:regression
+        #run: echo GitHub Integration is successful
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: logs
+          path: logs
