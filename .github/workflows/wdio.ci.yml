@@ -1,14 +1,14 @@
-name: web-automation-wdio-CI
+name: Web-Automation-wdio-CI
 on: [ push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
     env: 
-      RUNNER: ${{secrets.RUNNER}}
-      HEADLESS: ${{secrets.HEADLESS}}
-      LOG_LEVEL: ${{secrets.LOG_LEVEL}}
-      TEST_STD_USERNAME: ${{secrets.TEST_STD_USERNAME}}
-      TEST_STD_PASSWORD: ${{secrets.TEST_STD_PASSWORD}}
+      RUNNER: ${{ secrets.RUNNER }}
+      HEADLESS: ${{ secrets.HEADLESS }}
+      LOG_LEVEL: ${{ secrets.LOG_LEVEL }}
+      TEST_STD_USERNAME: ${{ secrets.TEST_STD_USERNAME }}
+      TEST_STD_PASSWORD: ${{ secrets.TEST_STD_PASSWORD }}
     steps:
       - name: Install Chromium
         run: sudo apt-get install chromium-browser
