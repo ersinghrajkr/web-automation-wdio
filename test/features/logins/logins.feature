@@ -2,7 +2,7 @@ Feature: IAM Logins for different role
 
     Feature Description
 
-    @Logins
+    @Logins @Regression
     Scenario Outline: <TestID>: Multiple role Login 
     Given As a standard user I login to SwagLabs
         |UserType           | Username      | Password      |

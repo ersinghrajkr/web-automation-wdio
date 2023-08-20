@@ -1,63 +1,68 @@
-import request from "supertest";
+import request, { SuperTest, Test } from "supertest";
+import { Response } from "supertest";
+import * as logNetworkTime from'superagent-node-http-timings';
 import logger from "./logger.helper.js";
-// import moduleName from 'module';
 
 // ts-node-esm ./test/helpers/api.helper.ts
-// console.log(`Supertest: ${typeof request}`);
-// console.log(`Supertest: ${request.length}`);
-// console.log(`Supertest: ${ request.toString()}`);
+// console.log(`Supertest: ${typeof supertest}`);
+// console.log(`Supertest: ${supertest.length}`);
+// console.log(`Supertest: ${ supertest.toString()}`);
 
-let payload = {
-	email: "eve.holt@reqres.in",
-	password: "pistol",
-};
 
-async function GET(testId: string, baseURL: string, endpoint: string, authToken: string, queryParam: object, acceptHeader: object) {
-	if (!baseURL || endpoint) {
-		throw Error(`Given Base URL: ${baseURL}, Endpoint: ${endpoint} is not valid`);
+
+// Define your default base URL
+const defaultbaseURL = "http://localhost:3000";
+type RequestOptions = {
+	testId: string;
+	baseURL?: string;
+	endpoint: string;
+	queryParam?: string;
+	authToken?: string;
+	payload?: object;
+	header?: object;
+}
+
+async function GET(options: RequestOptions) {
+	if (!options.baseURL || !options.endpoint) {
+		throw Error(`Given Base URL: ${options.baseURL}, Endpoint: ${options.endpoint} is not valid`);
 	}
-	baseURL = baseURL.trim();
-	endpoint = endpoint.trim();
-	logger.info(testId, "info", `Making a GET call to ${endpoint}`);
+	logger.info(options.testId, "info", `Making a GET call to ${options.endpoint}`);
 	try {
-		return await request(baseURL.trim())
-			.get(endpoint.trim())
-			.query(queryParam)
-			.auth(authToken, { type: "bearer" })
-			.set("Accept", acceptHeader ? `${acceptHeader}` : `application/json`);
+		const requestReadyToCall =  request(options.baseURL.trim())
+			.get(options.endpoint.trim())
+			.query(options.queryParam)
+			.auth(options.authToken, { type: "bearer" })
+			.set("Accept", options.header ? `${options.header}` : `application/json`);
+		const response =  await requestReadyToCall;
+		return response;
 	} catch (error) {
-		error.message = `Error while making a GET call to ${endpoint}, ${error}`;
+		error.message = `Error while making a GET call to ${options.endpoint}, ${error}`;
 		throw error;
 	}
 }
 
-async function POST(testId: string, baseURL: string, endpoint: string, authToken: string, payload: object) {
-	// const urlRegex = /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i;
-	if (!baseURL || !endpoint) {
-		throw Error(`Given Base URL: ${baseURL}, Endpoint: ${endpoint} is not a valid URL`);
+async function POST(options: RequestOptions) {
+	if (!options.baseURL || !options.endpoint) {
+		throw Error(`Given Base URL: ${options.baseURL}, Endpoint: ${options.endpoint} is not a valid URL`);
 	}
-	baseURL = baseURL.trim();
-	endpoint = endpoint.trim();
-	if (!payload || typeof payload !== "object") {
-		throw Error(`Invalid payload: ${payload}`);
+	if (!options.payload || typeof options.payload !== "object") {
+		throw Error(`Invalid payload: ${options.payload}`);
 	}
-	// if (!authToken) {
-	// 	throw Error(`Auth token is missing`);
-	// }
-	logger.info(testId, "info", `Making a POST call to ${endpoint}`);
+	logger.info(options.testId, "info", `Making a POST call to ${options.endpoint}`);
 	try {
-		let resObj = await request(baseURL)
-			.post(endpoint)
-			.auth(authToken, { type: "bearer" })
-			.set("Accept", `application/json`)
-			.send(payload);
-		logger.info(`${this.testId}: Response - ${JSON.stringify(resObj.body)}`);
+		const postResponse = await request(options.baseURL.trim()).post(options.endpoint.trim()).auth(options.authToken, { type: "bearer" }).set("Accept", `application/json`).send(options.payload);
+		return { 
+			status: postResponse.status,
+			header: postResponse.header,
+			bodyTxt: JSON.parse((postResponse as any).text),
+			body: postResponse.body,
+		};
 	} catch (error) {
-		error.message = `Error while making a POST call to ${endpoint}, ${error}`;
-		logger.error(testId, `Error while making a POST call to ${endpoint}`, error);
+		error.message = `Error while making a POST call to ${options.endpoint}, ${error}`;
+		logger.error(options.testId, `Error while making a POST call to ${options.endpoint}`, error);
 		throw error;
 	}
-};
+}
 
 export default { GET, POST };
 /**

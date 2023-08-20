@@ -1,0 +1,29 @@
+{
+	"req": {
+		"method": "POST",
+		"url": "https://reqres.in/api/users",
+		"data": { "email": "eve.holt@reqres.in", "password": "pistol" },
+		"headers": { "authorization": "Bearer undefined", "accept": "application/json", "content-type": "application/json" }
+	},
+	"header": {
+		"date": "Sun, 06 Aug 2023 18:47:10 GMT",
+		"content-type": "application/json; charset=utf-8",
+		"content-length": "100",
+		"connection": "close",
+		"x-powered-by": "Express",
+		"access-control-allow-origin": "*",
+		"etag": "W/\"64-SZOSsztw2HrHsfa7kUgAvu7KYJ4\"",
+		"via": "1.1 vegur",
+		"cf-cache-status": "DYNAMIC",
+		"report-to": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=VlyoFRGg5pbiJ8UidKH8DZDw%2FPbR6F4TTWF3k5bdsXIUYImWzwvGSkbl4ZNLqM6hAt5Fil68Lfn7k7MVDK0FIemZv5hu3ImNt6PMJcvv%2B%2FaDCxZvRVEl9xlyYA%3D%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}",
+		"nel": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}",
+		"server": "cloudflare",
+		"cf-ray": "7f29725f9eb893aa-BBI"
+	},
+	"status": 201,
+	"text": "{\"email\":\"eve.holt@reqres.in\",\"password\":\"pistol\",\"id\":\"167\",\"createdAt\":\"2023-08-06T18:47:10.292Z\"}"
+}
+
+
+
+
