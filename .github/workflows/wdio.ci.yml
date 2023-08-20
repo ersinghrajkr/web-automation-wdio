@@ -12,7 +12,7 @@ jobs:
         - name: Install
           run: npm install
         - name: Test-wdio
-          run: npm run qa:logins
+          run: npm run qa:regression
         - uses: actions/upload-artifact@v1
           if: failure()
           with:
