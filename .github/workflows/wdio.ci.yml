@@ -1,4 +1,4 @@
-name: web-automation-wdio-CI
+name: Web-Automation-wdio-CI
 on: [ push, pull_request]
 jobs:
   build:
