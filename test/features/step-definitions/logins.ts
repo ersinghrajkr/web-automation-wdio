@@ -5,6 +5,17 @@ import sauceHomePage from "../../page-objects/saucehome.page.js";
 import apiHelper from '../../helpers/api.helper.js';
 import constants from '../../../fixtures/constants.json' assert { type: "json" };
 
+type CustomResponse<T> = {
+	request: {
+	  method: string;
+	  url: string;
+	  headers?: Record<string, string>;
+	  // Other request-related properties you need
+	};
+	response: T;
+  };
+
+
 Given(/^As (a|an) (.*) user I login to SwagLabs$/, async function (prefixTxt, userType, dataTable) {
 	// Accessing Global Variable inside the steps coming from CustomWorld.ts. But it will be accessible for first set of data table
 	// logger.info("CustomeWorld Global Variable - anyGlobalVar: ", this.anyGlobalVar);
@@ -20,16 +31,25 @@ Given(/^As (a|an) (.*) user I login to SwagLabs$/, async function (prefixTxt, us
 	// @ts-ignore
 	// console.log("UserType>>>>", userType);
 	await browser.call(async () => {
+		let requestOptions = {
+			testId: this.testid,
+			baseURL: "https://reqres.in/",
+			endpoint: constants.REQRES.GET_USERS,
+			payload: {email: "eve.holt@reqres.in",password: "pistol"}
+		}
 		// @ts-ignore
-		await apiHelper.POST(this.testid, "https://reqres.in/", constants.REQRES.GET_USERS, "", {email: "eve.holt@reqres.in",password: "pistol"})
+		// let {req, text, header, status } = await apiHelper.POST(requestOptions);
+		let responseData= await apiHelper.POST(requestOptions);
+		logger.info(`${this.testId}: ResponseObject - ${JSON.stringify(responseData)}`);
+		// logger.info(`${this.testId}: ResponseObject - ${JSON.stringify(text)}`,body);
+		// logger.info(`${this.testId}: RequestObject - ${JSON.stringify(req)}`);
+		// logger.info(`${this.testId}: RequestHeader - ${JSON.stringify(header)}`);
+		// logger.info(`${this.testId}: ResponseStatus - ${JSON.stringify(status)}`);
 	})
 	
 	try {
 		// @ts-ignore
 		await sauceHomePage.navigateTo(`${browser.options.shoreURL}`);
-		// await sauceHomePage.enterUsername();
-		// await sauceHomePage.enterPassword();
-		// await sauceHomePage.clickLoginBtn();
 		await sauceHomePage.loginToSauceApp(this.testid, process.env.TEST_STD_USERNAME, process.env.TEST_STD_PASSWORD);
 		logger.info(`Credentials >>>> ${process.env.TEST_STD_USERNAME} - ${process.env.TEST_STD_PASSWORD}`);
 	} catch (error) {
